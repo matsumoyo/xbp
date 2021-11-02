@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBPのページ</title>
+    <link rel="stylesheet" href="css/style.css">  
+  <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>絶対に勝てないじゃんけん</h1><br>
+    <h3>コード</h3><br>
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">import random</li>
+        <li style="background-color:#EEF;">a=random.random()</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">def jyanken(a,b):</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;if a == b:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('あいこです')</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;elif a == 0 and b == 2:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('相手はパーを出しました。あなたの負けです')</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;elif a == 1 and b == 0:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('相手はグーを出しました。あなたの負けです。')</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;elif a == 2 and b == 1:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('相手はチョキを出しました。あなたの負けです。')</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;else:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(a,b)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">#先にリストを作ってその中からランダムにする</li>
+        <li style="background-color:#EEF;">pc=[]</li>
+        <li style="background-color:#EFF;">a= int(input('(グー：0,チョキ：1,パー：2)あなたが出す手は？：'))</li>
+        <li style="background-color:#EEF;">if a==0:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pc.append(0)</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pc.append(2)</li>
+        <li style="background-color:#EFF;">elif a==1:</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pc.append(1)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pc.append(0)</li>
+        <li style="background-color:#EEF;">elif a==2:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pc.append(2)</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pc.append(1)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">b=random.choice(pc)</li>
+        <li style="background-color:#EEF;">jyanken(a,b)</li>
+        </ol></code>
+
+        <li>＃があるとわかりやすく作業できる</li><br>
+        <li>０=グー，１=チョキ，２=パーで入力をしてプレイヤーは絶対勝てない</li>
+
+
+</body>
+</html>
