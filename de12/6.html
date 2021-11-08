@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBPのページ</title>
+    <link rel="stylesheet" href="css/style.css">  
+  <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第六回</h1>
+    ・コード<br>
+
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;"># -*- coding: utf-8 -*-</li>
+        <li style="background-color:#EEF;">import tkinter as tk</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">class App:</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウを初期化</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.master = tk.Tk()</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.master.title('TODOアプリ')</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.master.geometry('400x300')</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.master.configure(padx=16, pady=16)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# TODO入力エリアを作成</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.input_area = InputArea(self.master)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.input_area.pack(side='top', fill='x')</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.input_area.click_add_btn = self.click_add_btn</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# TODOリストの表示エリアを作成</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.list_area = ListArea(self.master)</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.list_area.pack(side='bottom', expand=True, fill='both')</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;def mainloop(self):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# masterに処理を委譲</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.master.mainloop()</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;def click_add_btn(self):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力エリアの追加ボタンが押されたら呼ばれる</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力エリアの入力値をリストエリアに追加する</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todo = self.input_area.entry.get() # 入力値を取得</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.input_area.entry.delete(0, 'end') # 入力行に残ったテキストを削除</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.list_area.listbox.insert('end', todo) # リストにTODOを追加</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">class InputArea(tk.Frame):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;TODOの入力エリア</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;ユーザーの入力を処理する</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;ユーザーが入力したTODOテキストを追加ボタンでリストに追加するのが役割</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, master):</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(InputArea, self).__init__(master)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ハンドル</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.click_add_btn = None</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ラベルの作成</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.label = tk.Label(self, text='TODO')</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.label.pack(side='left')</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 入力行の作成</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.entry = tk.Entry(self)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.entry.pack(side='left', expand=True, fill='x')</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 追加ボタンの作成</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.add_btn = tk.Button(self, text='追加', command=self._click_add_btn)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.add_btn.pack(side='left')</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def _click_add_btn(self):</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if self.click_add_btn:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.click_add_btn()</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">class ListArea(tk.Frame):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;TODOリストの表示エリア</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;ユーザーが入力したTODOが表示される</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, master):</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(ListArea, self).__init__(master)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# リストの作成</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.listbox = tk.Listbox(self, height=5)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.listbox.pack(side='top', expand=True, fill='both')</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 削除ボタンの作成</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.del_btn = tk.Button(self, text='削除', command=self._click_del_btn)</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.del_btn.pack(side='bottom', fill='x')</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def _click_del_btn(self):</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択中のTODOを削除する</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sel = self.listbox.curselection()</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in sel[::-1]:</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.listbox.delete(i)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">def main():</li>
+        <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;app = App()</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;app.mainloop()</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">if __name__ == '__main__':</li>
+        <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;main()</li>
+        <li style="background-color:#EFF;"></li>
+        </ol></code><br>
+
+        <h2>内容</h2><br>
+        ・TODOリストを今回は作成した。<br>
+        ・ラベルはTODOで、追加したい内容を入力して追加をクリックするとリストにその内容が乗るようになっている<br>
+        ・グループでの話し合いではTODOリスト、WEBCLASSの通知機能などがあった。<br>
+        ・本当は曜日ごとにまとめられるようにしたかった。参考にできるサイトが見つかり次第やってみたい。
+
+        <h2>参考にしたサイト</h2><br>
+       <li><a href="https://qiita.com/narupo/items/53326d6890762fc76d0f">コードの参考</a></li><br>
+       <li><a href="https://www.acrovision.jp/service/data/?p=616">tkinterの参考</a></li><br>
+       <li><a href="https://mmtomitomimm.blogspot.com/2018/01/pythontkintertodo.html">コードの差異の確認</a></li>
+
+
+
+
+
+        
+        
+
+
+
+
+
+    </div>
+
+</body>
+</html>
