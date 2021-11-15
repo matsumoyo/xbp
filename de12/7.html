@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBPのページ</title>
+    <link rel="stylesheet" href="css/style.css">  
+  <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第七回</h1>
+    ・コード<br>
+    <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">import pandas as pd  # データ分析に用いるライブラリ</li>
+        <li style="background-color:#EEF;">import matplotlib.pyplot as plt  # グラフ表示に用いるライブラリ</li>
+        <li style="background-color:#EFF;">pd.set_option('display.unicode.east_asian_width', True)  # 表示のずれを少し緩和</li>
+        <li style="background-color:#EEF;">plt.rcParams['font.family'] = 'IPAexGothic'  # グラフ表示におけるフォントの指定</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">data_path = "./data.csv"</li>
+        <li style="background-color:#EEF;">df_data = pd.read_csv(data_path,  encoding="utf-8-sig")</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">print(df_data.columns)</li>
+        <li style="background-color:#EEF;">#簡単な統計</li>
+        <li style="background-color:#EFF;">#print(df_data.describe())</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">#時間ごとの数</li>
+        <li style="background-color:#EEF;">#print(df_data["合計時間"].value_counts(sort=False))</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">#print(df_data.groupby("駅").mean())</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">#print(df_data.loc[:, "路線"].unique())</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">#print(df_data.groupby("").mean())</li>
+        <li style="background-color:#EFF;">#京急本線の三十分以内で着く乗り換えが十分未満の駅が二十二件</li>
+        <li style="background-color:#EEF;">mask = (df_data["路線"] == "京急本線") &amp; (df_data["合計時間"] &lt; 30) &amp; (df_data["乗換時間"] &lt; 10)</li>
+        <li style="background-color:#EFF;">print(df_data[mask])</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">x = df_data.loc[:, "路線"]</li>
+        <li style="background-color:#EEF;">y = df_data.loc[:, "家賃"]</li>
+        <li style="background-color:#EFF;">plt.scatter(x, y, s=100, alpha=0.2)</li>
+        <li style="background-color:#EEF;">plt.xlabel("路線")</li>
+        <li style="background-color:#EFF;">plt.ylabel("家賃")</li>
+        <li style="background-color:#EEF;">plt.show()</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">#print(df_data.loc[:, ["駅"].unipue())</li>
+        </ol></code>
+    
+
+
+        <h2>内容</h2><br>
+        ・やりたかったこととしては、京急本線で合計時間が三十分未満、かつ乗り換え時間が十分未満になる物件を紹介したかった。<br>
+        ・今の段階では京急本線で上の条件を満たす物件をピックアップするところまでできた。<br>
+        <h2>＜課題＞</h2><br>
+        ・京急線のデータにある駅をリスト化すること。<br>
+        ・物件名を表示すること<br>
+        ・検索した二十二件の合計時間と家賃の相対的なグラフを作ること<br>
+
+        <img src="S__9576450.jpg" width="30%"><br>
+        ・二十二件の検索結果を得るところまではできた。<br>
+
+        <img src="S__9576451.jpg" width="30%"><br>
+        ・グラフを表示させることはできたけど、文字が重なってて読めない<br>
+
+        <h2>感想</h2>
+        ・まだどのコードを使えばいいのかよく理解できていないので、<br>
+        どのコードが機能して、どのコードがダメなのかがよくわからなかった。<br>
+        ・道用先生のように、どんどん条件を絞っていけるようなやり方をしたかったけど、実力に見合ってなかった。<br>
+        ・いったん今ある壁を乗り越えられるようにしたい。
+
+
+        
+
+        <h2>参考にしたサイト</h2><br>
+       <li><a href="https://qiita.com/ymtm123/private/f40da6f9c994c6f73e3d#%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E5%88%97%E3%81%AE%E5%80%A4%E3%81%A7%E4%B8%A6%E3%81%B9%E6%9B%BF%E3%81%88%E3%82%8B%E5%A0%B4%E5%90%88">データの分析</a></li><br>
+       <li><a href="https://qiita.com/ymtm123/private/22c3ae77d61cc6d27950">データの可視化</a></li><br>
+       <li><a href=""></a></li>
+
+
+
+
+
+        
+        
+
+
+
+
+
+    </div>
+
+</body>
+</html>
