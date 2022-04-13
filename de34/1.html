@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBPのページ</title>
+    <link rel="stylesheet" href="css/style.css">  
+  <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>マイコンボードについて</h1>
+    マイコンとは、マイクロコンピューターをボードに載せて手軽に使えるようになったものをさす。<br>
+    主なマイコンにはArduino、M5Stackなどがある。<br>
+    Arduinoは入出力できるポートがついており、プログラムを書くことでセンサーの値を読み込んだり、LEDライトを光らせることができる。<br>
+    プログラムはArduinoIDEを使って書くことができて、「ツール」→「シリアルポート」から接続したボードを読み込むことができる。<br>
+
+    <h1>LED</h1>
+   LEDには二本のピンがあって、長いほうが+で短いほうが-、+はアノード,-はカソードという。<br>
+   pinMode(13,OUTPUT)のコードでマイコンの13番から出力するというプログラムを作れる。<br>
+   digitalWrite()で()の中に、<br>HIGHを入力することで、LEDが付く。<br>LOWを入力することでLEDがつかないというコードになる。
+
+   <h1>Cdsセル</h1>
+   Cdsセルは暗い場所だと値が大きくなって、明るいところだと値は小さくなる。<br>
+   val=analogRead(1);のコードはセンサーのピンがアナログ一番ピンから読み取るというコードになっている。<br>
+
+ <h1>暗くなると光るようにする</h1>
+ <code>
+    <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+    <li style="background-color:#EFF;">void setup() {</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;// put your setup code here, to run once:</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;Serial.begin(9600);</li>
+    <li style="background-color:#EEF;">pinMode(13,OUTPUT);</li>
+    <li style="background-color:#EFF;"></li>
+    <li style="background-color:#EEF;">}</li>
+    <li style="background-color:#EFF;"></li>
+    <li style="background-color:#EEF;">void loop() {</li>
+    <li style="background-color:#EFF;"></li>
+    <li style="background-color:#EEF;">&nbsp;int val=0;</li>
+    <li style="background-color:#EFF;">&nbsp;val=analogRead(1);</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;Serial.println(val);</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;delay(500);</li>
+    <li style="background-color:#EEF;"></li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;if(val&lt;200){</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(13,LOW);</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li style="background-color:#EEF;">&nbsp;&nbsp;}else{</li>
+    <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;digitalWrite(13,HIGH);</li>
+    <li style="background-color:#EEF;">}</li>
+    <li style="background-color:#EFF;">}</li>
+    </ol></code>
+
+
+
+</div>
+
+</body>
+</html>
