@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>XBPのページ</title>
+    <link rel="stylesheet" href="css/style.css">  
+  <!-- ⑤スタイルシートの設定をしよう -->
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>コード</h1>
+    <code>
+      <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+      <li style="background-color:#EFF;">#include &lt;Adafruit_NeoPixel.h&gt;</li>
+      <li style="background-color:#EEF;">#define PIN        9 // 信号用のピンを指定</li>
+      <li style="background-color:#EFF;">#define NUMPIXELS 5 // LEDの数を指定</li>
+      <li style="background-color:#EEF;">int brightness=50;//明るさ</li>
+      <li style="background-color:#EFF;"></li>
+      <li style="background-color:#EEF;">Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);</li>
+      <li style="background-color:#EFF;"></li>
+      <li style="background-color:#EEF;">void setup() {</li>
+      <li style="background-color:#EFF;">&nbsp;&nbsp;pixels.begin(); // NeoPixel出力ピンの初期化</li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;pixels.setBrightness(brightness);</li>
+      <li style="background-color:#EFF;">}</li>
+      <li style="background-color:#EEF;"></li>
+      <li style="background-color:#EFF;">void loop() {</li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;pixels.clear(); // すべてのLEDの色を0にセット</li>
+      <li style="background-color:#EFF;"></li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;for(int i=0; i&lt;NUMPIXELS; i++) {</li>
+      <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;int r=random(0,255);</li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;int g=random(0,255)</li>
+      <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;int b=random(0,255)</li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;pixels.setPixelColor(i, pixels.Color(r, g, b));</li>
+      <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;pixels.show();</li>
+      <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;delay(1000);</li>
+      <li style="background-color:#EFF;">&nbsp;&nbsp;}</li>
+      <li style="background-color:#EEF;">}</li>
+      </ol></code>
+
+<img src="images/S__17924114.jpg" width="30%">
+<img src="images/S__17924116.jpg" width="30%">
+<img src="images/S__17932290.jpg" width="30%"><br>
+
+<h2>説明</h2>
+・日常的に感じているような感情やシチュエーションが多かった。<br>
+
+<h2>整うとは</h2>
+整うという言葉を使うときは、銭湯へ行きサウナののちに水風呂、そして外気浴をしたときについこぼれ出る言葉である。<br>
+具体的な状況としては、・頭がボーっとする　・リラックスしている　・幸福感がある<br>
+整いたいと思うときは、疲れているとき、タスクを終えたとき、など何かを達成したときにそれをより強めたくなったときに行く傾向がある<br>
+
+
+
+
+
+</div>
+
+</body>
+</html>
